@@ -16,8 +16,17 @@ int main()
     // Given the user answer, select which method to call
     switch (c) {
     case 't': //tokenize
-      puts("Please input string:s");
-      puts(">");
+      puts("Please input string:");
+      fputs(">",stdout);
+      int s;
+      while ((s=getchar())=='\n'); //skip any new lines
+      while(1){// infinite loop
+	putchar(s);
+	if(s == '\n'){
+	  break; //exit out of loop when you encounter a new line symbol
+	}
+	s = getchar();
+      }
       break;
       
     case 'h':
