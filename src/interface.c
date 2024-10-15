@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "tokenizer.h"
 #include "history.h"
 
@@ -18,15 +19,15 @@ int main()
     case 't': //tokenize
       puts("Please input string:");
       fputs(">",stdout);
-      int s;
-      while ((s=getchar())=='\n'); //skip any new lines
-      while(1){// infinite loop
-	putchar(s);
-	if(s == '\n'){
-	  break; //exit out of loop when you encounter a new line symbol
-	}
-	s = getchar();
-      }
+      getchar();
+      int max_len = 200;
+      char buf[200];
+      fgets(buf, max_len, stdin);
+      char **tokens = malloc(count_tokens(buf) * sizeof(char *));
+      tokens = tokenize(buf);
+      puts("String input tokenized:");
+      print_tokens(tokens);
+      free_tokens(tokens);
       break;
       
     case 'h':
